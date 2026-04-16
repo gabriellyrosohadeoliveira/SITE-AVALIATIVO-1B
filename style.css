@@ -1,0 +1,86 @@
+/* =========================================
+   VARIÁVEIS E DESIGN SYSTEM
+   ========================================= */
+:root {
+    --primary-color: #2c3e50;
+    --accent-color: #e67e22;
+    --bg-color: #f4f4f4;
+    --text-color: #333;
+    --radius: 8px;
+    --gap: 1.5rem;
+    --transition: all 0.3s ease;
+    --font-base: 1rem;
+}
+
+/* MODO ALTO CONTRASTE */
+body.high-contrast {
+    --primary-color: #000;
+    --accent-color: #ffff00;
+    --bg-color: #000;
+    --text-color: #fff;
+}
+
+/* =========================================
+   LAYOUT BASE (MOBILE-FIRST)
+   ========================================= */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    font-size: var(--font-base);
+    margin: 0;
+    transition: var(--transition);
+}
+
+.container {
+    padding: 2rem 5%;
+}
+
+/* GRID DINÂMICO - Edite aqui as colunas */
+.grid-layout {
+    display: grid;
+    gap: var(--gap);
+    grid-template-columns: 1fr; /* Mobile */
+}
+
+/* Desktop Tablet */
+@media (min-width: 768px) {
+    .grid-layout {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+
+/* =========================================
+   COMPONENTES
+   ========================================= */
+.card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    opacity: 0; /* Para animação de scroll */
+    transform: translateY(20px);
+}
+
+.card.reveal {
+    opacity: 1;
+    transform: translateY(0);
+    transition: var(--transition);
+}
+
+.accordion-item {
+    border-bottom: 1px solid var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.accordion-header {
+    width: 100%;
+    padding: 1rem;
+    text-align: left;
+    background: none;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    color: var(--primary-color);
+}
